@@ -229,9 +229,9 @@ mod tests {
 
     #[test]
     fn test_blending() {
-        let lower = StraightRgba::from_be(0x3498dbff);
-        let upper = StraightRgba::from_be(0xe74c3c7f);
-        let expected = StraightRgba::from_be(0xa67f93ff);
+        let lower = StraightRgba::from_be(u32::from_ne_bytes([0xff, 0xdb, 0x98, 0x34]));
+        let upper = StraightRgba::from_be(u32::from_ne_bytes([0x7f, 0x3c, 0x4c, 0xe7]));
+        let expected = StraightRgba::from_be(u32::from_ne_bytes([0xff, 0x93, 0x7f, 0xa6]));
         let blended = lower.oklab_blend(upper);
         assert_eq!(blended, expected);
     }
